@@ -1,6 +1,4 @@
-##todoList.md/n#### 搭建一个可以根据md来生成静态网站的工具
-
-/n##support-react.md/n#### webpack 简易搭建 react项目
+##support-react.md/n#### webpack 简易搭建 react项目
 
 ```shell
 npm i react react-dom
@@ -99,4 +97,6 @@ modules: {
   ]
 }
 ```
+/n##script-gendoc.md/n#### 简单脚本生成READM.md
+
 /n
