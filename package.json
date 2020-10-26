@@ -1,0 +1,23 @@
+{
+  "name": "static_gen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaiyueDamowang/static_gen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CaiyueDamowang/static_gen/issues"
+  },
+  "homepage": "https://github.com/CaiyueDamowang/static_gen#readme",
+  "devDependencies": {
+    "webpack": "^5.2.0"
+  }
+}
