@@ -33,7 +33,7 @@ const readFile = (fileName) => {
 const writeDoc = (contents) => {
   let README = ''
   contents.forEach(file => {
-      README += `##${file.fileName}\/n`
+      README += `## ${file.fileName}\/n`
       README += `${file.fileContent}\/n`
   });
 
