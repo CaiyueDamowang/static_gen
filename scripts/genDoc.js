@@ -35,6 +35,7 @@ const writeDoc = (contents) => {
   contents.forEach(file => {
       README += `## ${file.fileName}\/n`
       README += `${file.fileContent}\/n`
+      README += '\/n'
   });
 
   fs.writeFileSync('README.md', README);

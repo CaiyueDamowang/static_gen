@@ -15,7 +15,7 @@ git commit -m "deploy"
 git push origin master
 ```
 
-/n## support-react.md/n#### webpack 简易搭建 react项目
+/n/n## support-react.md/n#### webpack 简易搭建 react项目
 
 ```shell
 npm i react react-dom
@@ -114,4 +114,4 @@ modules: {
   ]
 }
 ```
-/n
+/n/n
