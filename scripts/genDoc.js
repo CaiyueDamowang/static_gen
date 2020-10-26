@@ -33,9 +33,9 @@ const readFile = (fileName) => {
 const writeDoc = (contents) => {
   let README = ''
   contents.forEach(file => {
-      README += `## ${file.fileName}/n`
-      README += `${file.fileContent}/n`
-      README += '/n'
+      README += `## ${file.fileName}\n`
+      README += `${file.fileContent}\n`
+      README += '\n'
   });
 
   fs.writeFileSync('README.md', README);

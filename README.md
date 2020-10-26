@@ -1,4 +1,5 @@
-## script-gendoc.md/n#### 简单脚本生成READM.md
+## script-gendoc.md
+#### 简单脚本生成READM.md
 
 ```js
 # package.json
@@ -15,7 +16,10 @@ git commit -m "deploy"
 git push origin master
 ```
 
-/n/n## support-react.md/n#### webpack 简易搭建 react项目
+
+
+## support-react.md
+#### webpack 简易搭建 react项目
 
 ```shell
 npm i react react-dom
@@ -114,4 +118,5 @@ modules: {
   ]
 }
 ```
-/n/n
+
+
