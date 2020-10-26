@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "d": "bash ./deploy.sh",
+    "d": "zsh ./deploy.sh",
     "bundle": "webpack"
   },
   "repository": {

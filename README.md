@@ -1,4 +1,21 @@
-##support-react.md/n#### webpack 简易搭建 react项目
+##script-gendoc.md/n#### 简单脚本生成READM.md
+
+```js
+# package.json
+  "scripts": {
+    "d": "zsh ./deploy.sh", // bash  或者zsh 都可以
+  },
+```
+
+```js
+node ./scripts/genDoc.js
+
+git add .
+git commit -m "deploy"
+git push origin master
+```
+
+/n##support-react.md/n#### webpack 简易搭建 react项目
 
 ```shell
 npm i react react-dom
@@ -97,6 +114,4 @@ modules: {
   ]
 }
 ```
-/n##script-gendoc.md/n#### 简单脚本生成READM.md
-
 /n

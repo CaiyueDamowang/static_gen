@@ -32,7 +32,7 @@ const readFile = (fileName) => {
 
 const writeDoc = (contents) => {
   let README = ''
-  contents.reverse().forEach(file => {
+  contents.forEach(file => {
       README += `##${file.fileName}\/n`
       README += `${file.fileContent}\/n`
   });
