@@ -28,20 +28,18 @@ const visitor = () => {
   const jscontext = []
 
   const visit = (node) => {
-    if (
-      node.content.startsWith('{{') &&
-      node.content.endsWith('}}')
-    ) {
-      const context = node.content.match(/\{\{(.+)\}\}/g);
-      
-      jscontext.push(context + ';')
-    }
+    const content = node.content;
+    if (/\{\{(.+)\}\}/g.test(content)) {
+      const context = content.match(/\{\{(.+)\}\}/g);
+      jscontext.push(context + ';');
+      return true;
+    } 
+    return false
   }
+
   return {
     visit,
-    getResult: () => {
-
-    }
+    getResult: () => jscontext
   }
 }
 
@@ -49,15 +47,21 @@ const visitor = () => {
 /**
  * @param {Array} AST
  */
-const biAST = (AST, visit) => {
+const biAST = (AST, visitor) => {
   const ast = AST.concat();
   const dummy = { children: [], content: '' };
   ast.forEach(node => dummy.children.push(node));
   
+  const visitor = visitor();
   const nodes = [dummy];
   while(nodes.length) {
     const node = nodes.pop();
-
+    
+    if (visitor.visit(node)) {
+      // 
+    } else {
+      // nodes.push(...node.children);
+    }
   };
 
 }
@@ -69,7 +73,7 @@ const compiler = (fileContent) => {
   const md = MarkdownIt();
   const HTML = md.render(fileContent);
   const AST = md.parse(fileContent);
-  biAST(AST, visit)
+  biAST(AST, visitor)
   // fs.writeFileSync('AST.js', JSON.stringify(AST));
   // const component = getReactComponent`${HTML}`;
   
