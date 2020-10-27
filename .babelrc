@@ -1,3 +1,12 @@
 {
-  "presets": ["@babel/preset-react"]
+  "presets": [
+    [
+      "@babel/preset-react",
+      {
+        "useBuiltIns": "usage",
+        "debug": true
+      }
+    ]
+  ],
+  "plugins": ["@babel/plugin-transform-runtime"]
 }

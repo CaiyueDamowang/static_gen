@@ -15,12 +15,6 @@ npm i @babel/core babel-loader -D
 ```
 ```shell
 npm i @babel/preset-react -D 
-# 支持react 
-# 此 preset 始终包含以下插件：
-
-# @babel/plugin-syntax-jsx
-# @babel/plugin-transform-react-jsx
-# @babel/plugin-transform-react-display-name
 ```
 
 ```json
