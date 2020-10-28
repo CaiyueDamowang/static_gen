@@ -91,3 +91,8 @@ modules: {
   ]
 }
 ```
+
+使用 scss 文件
+```js
+npm i -D scss-loader style-loader css-loader
+```

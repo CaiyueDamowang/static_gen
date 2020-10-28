@@ -13,8 +13,12 @@ npm i webpack-cli@^3 webpack-dev-server -D
     compress: true,
     publicPath: '/dist/',
     contentBase: path.resolve(__dirname, 'demo/'),    
-  }
+  },
+    plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
 ```
+
 #### publicPath 
   `dev-server` 编译后的资源不会输出到某个文件夹下，而是保存在内存中
 

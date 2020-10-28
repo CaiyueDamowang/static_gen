@@ -1,3 +1,4 @@
 import React from 'react';
+import './index.scss'
 
-export const Navigation = () => <nav>navigation</nav>;
+export const Navigation = () => <nav className={'nav'}>navigation</nav>;

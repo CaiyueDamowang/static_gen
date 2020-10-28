@@ -1,5 +1,7 @@
 const path = require('path');
-
+const webpack = require('webpack');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 /**
  * @type {import('webpack').Configuration}
  */
@@ -10,41 +12,44 @@ module.exports = {
     filename: 'bundle.js',
   },
 
-  /**
-   * @param {publicPath} [link](https://webpack.docschina.org/configuration/dev-server/#devserverpublicpath-)
-   */
   devServer: {
     host: 'localhost',
     port: 8000,
     compress: true,
     publicPath: '/dist/',
-    contentBase: path.resolve(__dirname, 'demo/'),
+    contentBase: path.resolve(__dirname, '/demo/'),
   },
 
   module: {
     rules: [
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
       {
         test: /\.jsx$/,
         use: ['babel-loader',],
       },
       {
         test: /\.md$/,
-        use: ['babel-loader', {
-          loader: require.resolve('./scripts/markdownLoader')
-        }],
+        use: ['babel-loader', require.resolve('./scripts/markdownLoader')],
       }
     ]
   },
 
   resolve: {
-    alias: {
-      "src": path.resolve(__dirname, './demo/src/'),
-      "@components" : path.resolve(__dirname, './demo/src/components/'),
-    },
     extensions: ['.js', '.jsx'],
     modules: [path.resolve(__dirname, './demo/src/components/'), 'node_modules']
   },
 
-  mode: "production",
+  plugins: [
+    // new HtmlWebpackPlugin({
+    //   removeComments: true,
+    //   removeStyleLinkTypeAttributes: true,
+    // }),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+
+  mode: "development",
   devtool: "source-map"
 }
