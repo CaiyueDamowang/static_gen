@@ -5,16 +5,20 @@ import { BrowserRouter } from "react-router-dom";
 import { Navigation } from './components/navigation/';
 import { Footer } from './components/footer/index';
 
-import List from "./docs/list.md";
 import "./app.scss";
+
+import config from './config';
+
+const { navigation, sidebar, footer } = config
 
 export const App = () => (
   <>
-    <Navigation />
+    <Navigation config={navigation} />
+    
     <BrowserRouter>
-      <List />
+
       <Router />
     </BrowserRouter>
-    <Footer />
+    <Footer config={footer} />
   </>
 );

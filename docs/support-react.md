@@ -70,7 +70,7 @@ ReactDom.render(<App />, document.getElementById('root'));
 > 注意： 只要是js文件使用了jsx语法，都应该被babel-loader编译一次
 
 
-### 使用jsx文件，实现精准打包
+### 使用jsx文件
 - 配置webpack
 ```js
 resolve: {
@@ -92,7 +92,8 @@ modules: {
 }
 ```
 
-使用 scss 文件
+#### 使用 scss 文件
 ```js
 npm i -D scss-loader style-loader css-loader
 ```
+

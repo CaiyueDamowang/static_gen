@@ -1,6 +1,6 @@
 export default {
     navigation: {
-        title: "",
+        title: "this is a title",
         links: [
 
         ]
