@@ -3,12 +3,17 @@ import './index.scss'
 
 
 export const Navigation = (props) => {
-  const { config } = props;
-  const { title } = config;
+  return (
+    <Navbar />
+  )
+}
+
+const Navbar = ({ title }) => {
   return (
     <nav className={'nav'}>
-      {/* <title> {title} </title> */}
-      {title}
+      <i className={'menu-controll'}>ic</i>
+      <h1 className={'nav-title white-text'}>title</h1>
+      <i className={'ssettings'}>ic</i>
     </nav>
   )
 }

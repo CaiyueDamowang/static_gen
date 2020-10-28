@@ -15,4 +15,4 @@ export default [
     path: 'C',
     component: C,
   },
-]
+];

@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HTMLWebpackPlugin = require('html-webpack-plugin');
+
 /**
  * @type {import('webpack').Configuration}
  */
@@ -17,7 +17,7 @@ module.exports = {
     port: 8000,
     compress: true,
     publicPath: '/dist/',
-    contentBase: path.resolve(__dirname, '/demo/'),
+    contentBase: path.resolve(__dirname, './demo/'),
   },
 
   module: {
@@ -50,6 +50,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
   ],
 
+  // 外部加载script标签 或者 CDN 在全局引入这些package
+  // externals: {
+  //   "React": "react",
+  //   "ReactDOM": "react-dom",
+  // },
   mode: "development",
   devtool: "source-map"
 }
