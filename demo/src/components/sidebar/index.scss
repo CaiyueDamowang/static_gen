@@ -1,5 +1,4 @@
 .sidebar-wrapper {
-    padding-top: 60px;
     min-height: 100vh;
     width: 100vw;
 
@@ -10,9 +9,21 @@
     bottom: 0;
 
     display: flex;
+    z-index: 99;
     
     .modal {
-        width: 100%;
-        background-color: rgba($color: #000000, $alpha: 0.1);
+      width: 100%;
+      background-color: rgba($color: #000000, $alpha: 0.2);
+    }
+
+    .sidebar {
+      padding: 50px 10px 0 20px;
+      width: 230px;
+      height: 100%;
+
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
+      position: relative;
     }
 }

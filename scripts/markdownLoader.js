@@ -11,12 +11,11 @@ const getReactComponent = (...content) => {
 
   const imr = `import React from 'react';\n`;
   const exports = 
-  `export default React.memo(
+  `export default
     () => (
       <>
         ${innerHTML.trim()}
       </>
-    )
   )`;
 
   const component = imr + exports

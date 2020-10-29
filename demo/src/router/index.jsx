@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import Routers from "./config";
 
-export default React.memo(() => (
+export default () => (
   <>
     {
       Routers.map(route => (
@@ -10,5 +10,4 @@ export default React.memo(() => (
       ))
     }
   </>
-)
 )

@@ -1,7 +1,6 @@
 const path = require('path');
 const fs = require('fs');
 
-const DOC_DIR = path.resolve(__dirname, '../docs/');
 
 const contents = [];
 
@@ -40,6 +39,8 @@ const writeDoc = (contents) => {
 
   fs.writeFileSync('README.md', README);
 }
+
+const DOC_DIR = path.resolve(__dirname, '../docs/');
 
 readDocDir(DOC_DIR)
 writeDoc(contents)
