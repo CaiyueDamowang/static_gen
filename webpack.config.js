@@ -6,7 +6,7 @@ const webpack = require('webpack');
  * @type {import('webpack').Configuration}
  */
 module.exports = {
-  entry: { index: path.resolve(__dirname, 'demo/src/index.jsx') },
+  entry: { index: path.resolve(__dirname, 'demo/src/index.tsx') },
   output: {
     path: path.resolve(__dirname, 'demo/dist'),
     filename: 'bundle.js',
@@ -27,18 +27,18 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.jsx$/,
-        use: ['babel-loader',],
-      },
-      {
         test: /\.md$/,
         use: ['babel-loader', require.resolve('./scripts/markdownLoader')],
+      },
+      {
+        test: /\.tsx$/,
+        use: ['awesome-typescript-loader'],
       }
     ]
   },
 
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.tsx', '.ts', '.md'],
     modules: [path.resolve(__dirname, './demo/src/components/'), 'node_modules']
   },
 
@@ -63,6 +63,4 @@ module.exports = {
   //   "ReactDOM": "react-dom",
   // },
   mode: "development",
-  devtool: "source-map",
-
 }

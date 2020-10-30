@@ -1,3 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body, #root {
+    height: 100%;;
+}
+a { text-decoration: none; }
+li { list-style: none; }
+
+
 // common 
 .white-text {
     color: #f4f4f4;
@@ -10,3 +22,4 @@
 .animated {
     transition: 1s;
 }
+

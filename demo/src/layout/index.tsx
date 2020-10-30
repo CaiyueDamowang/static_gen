@@ -5,14 +5,14 @@ import { Sidebar } from "../components/sidebar/index"
 
 import './index.scss';
 
-const Layout = () => {
+const Layout: React.FC = () => {
   return (
     <div className={'layout'}>
       <Navigation />
       <Sidebar />
 
       <div style={{
-        flexGrow:1,
+        flexGrow: 1,
       }}></div>
 
       <Footer></Footer>
