@@ -1,4 +1,4 @@
-#### 支持加载md文件
+#### jsx支持加载md文件
 
 安装 `markdown-it`
 
@@ -17,3 +17,6 @@ const compiler = (fileContent) => {
   return component
 };
 ```
+
+
+#### 在ts文件支持md

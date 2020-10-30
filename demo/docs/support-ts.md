@@ -59,3 +59,22 @@ export const App: React.FC = () => {
     extensions: ['.js', '.tsx', '.ts'],
   }
 ```
+
+
+#### 在ts中引入md文件
+
+配置webpack
+      {
+        test: /\.md$/,
+        use: ['babel-loader', require.resolve('./scripts/markdownLoader')],
+      },
+
+在需要引入md文件的组件 根目录下 添加 typings.d.ts
+
+```ts
+declare module "*.md" {
+  const content: string;
+  export default content;
+}
+```
+这样ts文件就不会报cont find moudle 的错误
