@@ -47,13 +47,6 @@ module.exports = {
     //   removeComments: true,
     //   removeStyleLinkTypeAttributes: true,
     // }),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        extraBabelIncludes: [
-          "node_modules/react-spring",
-        ]
-      }
-    }),
     new webpack.HotModuleReplacementPlugin(),
   ],
 
@@ -62,5 +55,5 @@ module.exports = {
   //   "React": "react",
   //   "ReactDOM": "react-dom",
   // },
-  mode: "development",
+  mode: "production",
 }

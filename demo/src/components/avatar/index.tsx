@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { css } from "emotion";
+import { ConfigContext, UserInfo } from "../../store";
 
 export const Avatar: React.FC = (props) => {
+  const {
+    sidebar: {
+      userInfo
+    }
+  } = useContext(ConfigContext);
 
   return (
-    <StyledAvatar />
+    <StyledAvatar userInfo={userInfo}/>
   )
 }
 
-const StyledAvatar: React.FC = () => {
-
+const StyledAvatar: React.FC<{
+  userInfo: UserInfo
+}> = ({ userInfo: {
+  avatar,
+  nickName,
+  motto
+} }) => {
   return (
     <div className={css`
       padding: 30px 20px;
@@ -24,14 +35,14 @@ const StyledAvatar: React.FC = () => {
       display: inline-block;
       border: 1px solid #000;
     `}>
-      <img src="" alt=""/>
+      <img src={avatar} alt=""/>
     </div>
     <div className={css`
       padding-left: 10px;
       flex: 1;
     `}>
-      <div className={'nickname'}>nickname</div>
-      <div className={'motto small-text'}>this is a motto</div>
+      <div className={'nickname'}>{nickName}</div>
+      <div className={'motto small-text'}>{motto}</div>
     </div>
   </div>
   )

@@ -12,8 +12,8 @@ const StyledFooter: React.FC = () => {
       padding: 25px;
       background-color: #4f95e1;
       box-shadow: 0 2px 8px rgba(0,0,0,.25);
-      text-align: center;`
-    }>
+      text-align: center;
+    `}>
       <div>
         <h6 className={'white-text'}>github: </h6>
         <h6 className={'white-text'}>contact us</h6>

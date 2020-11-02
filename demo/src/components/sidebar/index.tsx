@@ -1,32 +1,34 @@
-import React, { Children } from "react";
+import React, { Children, useContext } from "react";
 import { css } from 'emotion';
 
 import { Slider } from "../animated/slider";
 import { Avatar } from "../avatar/index";
-import { List } from '../list/index';
+import { Menu } from '../menu/index';
 import { SpringProps } from "react-spring/renderprops";
+import { ConfigContext } from "../../store";
 
-export const Sidebar: React.FC = React.memo(() => {
-  const width = 230;
+export const Sidebar: React.FC = () => {
+  const width = 220;
   const leftInAnimated: SpringProps = {
     from: { left: -width },
     to: { left: 0 },
-  }
+  };
 
   return (
     <StyledSidebar>
       <Slider animationConfig={leftInAnimated}>
         <Container width={width}>
           <Avatar />
-          <List dataSource={[]} />
+          <Menu />
         </Container>
       </Slider>
     </StyledSidebar>
   )
-})
+};
 
 const Container: React.FC<{
-  width: number
+  width: number,
+  children: React.ReactElement[]
 }> = ({ width, children }) => {
   return (
     <div
@@ -45,6 +47,7 @@ const Container: React.FC<{
   )
 }
 
+// modal
 const StyledSidebar: React.FC = (props) => {
   return (
     <div className={css`
@@ -69,4 +72,3 @@ const StyledSidebar: React.FC = (props) => {
     </div>
   )
 }
-

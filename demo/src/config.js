@@ -9,12 +9,12 @@ export default {
   },
   sidebar: {
     menu: [  // submenu
-
+      { name: 'react', link: '/react' }
     ],
     userInfo: {
-      avatar: {},
-      nickName: "",
-      motto: "",
+      avatar: "",
+      nickName: "nickName",
+      motto: "motto",
     }
   },
   section: {

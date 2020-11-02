@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { css } from 'emotion';
+import { ConfigContext, NavigationProps } from '../../store';
 
-export const Navigation: React.FC = (props) => {
+export const Navigation: React.FC = () => {
+  const { navigation }  = useContext(ConfigContext)
   return (
-    <Navbar />
+    <Navbar {...navigation} />
   )
 }
 
-const Navbar = (): React.ReactElement => {
+const Navbar: React.FC<NavigationProps> = (props) => {
+
   return (
     <nav className={css`
       width: 100%;
@@ -34,7 +37,7 @@ const Navbar = (): React.ReactElement => {
         font-size: 22px;
         line-height: 30px;
         position: relative;
-      ` + 'white-text'}>title</h1>
+        ` + ' white-text'}>{ props.title }</h1>
       <i className={'settings'}>ic</i>
     </nav>
   )
