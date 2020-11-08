@@ -7,7 +7,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     index:  path.resolve(__dirname, "demo/src/index.tsx"),
-    // defaultVendors: ['react', 'react-spring', 'react-dom', 'emotion'],
+    defaultVendors: ['react', 'react-spring', 'react-dom', 'emotion'],
   },
   output: {
     path: path.resolve(__dirname, "demo/dist"),
@@ -20,7 +20,7 @@ module.exports = {
     port: 8000,
     historyApiFallback: true,
     compress: true,
-    publicPath: "/static/",
+    publicPath: "/dist/",
     contentBase: path.resolve(__dirname, "./demo/"),
   },
 
@@ -55,7 +55,7 @@ module.exports = {
       removeStyleLinkTypeAttributes: true,
       filename: path.resolve(__dirname, 'demo/index.html')
     }),
-    // new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.RuntimeChunkPlugin({ // 优化： 提取公共代码 防止公共模块打包进业务代码里
       name: 'common',
       minChunks: 2,
@@ -67,7 +67,7 @@ module.exports = {
       chunks: "async",
       minSize: 0,
       minRemainingSize: 0,
-      maxSize: 20000,
+      maxSize: 200000,
       minChunks: 1,
       maxAsyncRequests: 30,
       maxInitialRequests: 30,
