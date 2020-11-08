@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "d-f": "bash ./deploy.sh",
-    "dev": "webpack-dev-server",
+    "dev": "webpack-cli serve",
     "start": "npm run dev",
     "bundle": "webpack",
     "lint": "eslint /demo/src/ --fix"
@@ -28,20 +28,19 @@
     "@types/react": "^16.9.55",
     "@types/react-dom": "^16.9.9",
     "@types/react-router-dom": "^5.1.6",
+    "@types/webpack-env": "^1.15.3",
     "@typescript-eslint/eslint-plugin": "^4.6.0",
     "@typescript-eslint/parser": "^4.6.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.1.0",
     "css-loader": "^5.0.0",
-    "eslint": "^7.12.1",
-    "eslint-plugin-react": "^7.21.5",
     "html-webpack-plugin": "^4.5.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^10.0.4",
     "style-loader": "^2.0.0",
     "typescript": "^4.0.5",
     "webpack": "^5.3.2",
-    "webpack-cli": "^3.1.0",
+    "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
@@ -49,7 +48,9 @@
     "markdown-it": "^12.0.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-hot-loader": "^4.13.0",
     "react-router-dom": "^5.2.0",
-    "react-spring": "^8.0.27"
+    "react-spring": "^8.0.27",
+    "styled-jsx": "^3.3.1"
   }
 }

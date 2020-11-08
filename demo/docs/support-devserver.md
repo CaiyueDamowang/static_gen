@@ -1,9 +1,16 @@
 #### 支持热更新
 
-安装`webpack-cli@^3` `webpack-dev-server`
+安装`webpack-cli` `webpack-dev-server`
 ```js 
-npm i webpack-cli@^3 webpack-dev-server -D
+npm i webpack-cli webpack-dev-server -D
 ```
+#### 版本问题
+`webpack-cli@4.0.5`中不再包含  'webpack-cli/bin/config-yargs'; 
+
+所以安装webpack-dev-server 3版本 webpack-cli4版本 会导致不兼容
+
+解决： npx webpack serve
+
 
 ```js
 // webpack.config.js

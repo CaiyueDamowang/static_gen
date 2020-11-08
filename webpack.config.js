@@ -1,59 +1,90 @@
-const path = require('path');
-const webpack = require('webpack');
-// const HTMLWebpackPlugin = require('html-webpack-plugin');
-
+const path = require("path");
+const webpack = require("webpack");
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 /**
  * @type {import('webpack').Configuration}
  */
 module.exports = {
-  entry: { index: path.resolve(__dirname, 'demo/src/index.tsx') },
+  entry: {
+    index:  path.resolve(__dirname, "demo/src/index.tsx"),
+    // defaultVendors: ['react', 'react-spring', 'react-dom', 'emotion'],
+  },
   output: {
-    path: path.resolve(__dirname, 'demo/dist'),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, "demo/dist"),
+    filename: "[name].js",
   },
 
   devServer: {
-    host: 'localhost',
+    host: "localhost",
+    hot: true,
     port: 8000,
+    historyApiFallback: true,
     compress: true,
-    publicPath: '/dist/',
-    contentBase: path.resolve(__dirname, './demo/'),
+    publicPath: "/static/",
+    contentBase: path.resolve(__dirname, "./demo/"),
   },
 
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.md$/,
-        use: ['babel-loader', require.resolve('./scripts/markdownLoader')],
+        use: ["babel-loader", require.resolve("./scripts/markdownLoader")],
       },
       {
         test: /\.tsx$/,
-        use: ['awesome-typescript-loader'],
-      }
-    ]
+        loader: "awesome-typescript-loader",
+      },
+    ],
   },
 
   resolve: {
-    extensions: ['.js', '.tsx', '.ts'],
-    modules: [path.resolve(__dirname, './demo/src/components/'), 'node_modules']
+    extensions: [".js", ".tsx", ".ts"],
+    modules: [
+      path.resolve(__dirname, "./demo/src/components/"),
+      "node_modules",
+    ],
   },
 
   plugins: [
-    // new HtmlWebpackPlugin({
-    //   removeComments: true,
-    //   removeStyleLinkTypeAttributes: true,
-    // }),
-    new webpack.HotModuleReplacementPlugin(),
+    new HTMLWebpackPlugin({
+      removeComments: true,
+      removeStyleLinkTypeAttributes: true,
+      filename: path.resolve(__dirname, 'demo/index.html')
+    }),
+    // new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.RuntimeChunkPlugin({ // 优化： 提取公共代码 防止公共模块打包进业务代码里
+      name: 'common',
+      minChunks: 2,
+    })
   ],
 
-  // 外部加载script标签 或者 CDN 在全局引入这些package
-  // externals: {
-  //   "React": "react",
-  //   "ReactDOM": "react-dom",
-  // },
+  optimization: {
+    splitChunks: {
+      chunks: "async",
+      minSize: 0,
+      minRemainingSize: 0,
+      maxSize: 20000,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      automaticNameDelimiter: "~",
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
+  },
   mode: "production",
-}
+};

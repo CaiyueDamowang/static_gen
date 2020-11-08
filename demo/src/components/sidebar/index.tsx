@@ -11,7 +11,7 @@ export const Sidebar: React.FC = () => {
   const width = 220;
   const leftInAnimated: SpringProps = {
     from: { left: -width },
-    to: { left: 0 },
+    to: { left: 0 }
   };
 
   return (

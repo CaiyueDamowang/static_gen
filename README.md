@@ -15,33 +15,71 @@
 
   为了避免在多个模块中，重复添加polyfill代码，此插件更改了polyfill代码的引用方式
 
-## script-gendoc.md
-#### 简单脚本生成READM.md
+## support-codesplit.md
+#### 代码分割
+
+在`webpack.config.js`中，配置`optimization`
 
 ```js
-# package.json
-  "scripts": {
-    "d": "zsh ./deploy.sh", // bash  或者zsh 都可以
+  plugins: [
+    new webpack.optimize.RuntimeChunkPlugin({ // 优化： 提取公共代码 防止公共模块打包进业务代码里
+      name: 'common',
+      minChunks: 2,
+    })
+  ],
+optimization: {
+    splitChunks: {
+      chunks: "async",
+      minSize: 0,
+      minRemainingSize: 0,
+      maxSize: 20000,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      automaticNameDelimiter: "~",
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
   },
 ```
+代码被分割为多个文件被html引入(启用html-webpack-plugin)
 
-```js
-node ./scripts/genDoc.js  // 读取文件 写文件
-
-git add .
-git commit -m "deploy"
-git push origin master
-```
-
+修改filename为想要的文件目录
 
 
 ## support-devserver.md
-#### 支持热更新
+#### 未支持热更新
 
-安装`webpack-cli@^3` `webpack-dev-server`
+安装`webpack-cli` `webpack-dev-server`
 ```js 
-npm i webpack-cli@^3 webpack-dev-server -D
+npm i webpack-cli webpack-dev-server -D
 ```
+#### 版本问题
+`webpack-cli@4.0.5`中不再包含  'webpack-cli/bin/config-yargs'; 
+
+所以安装webpack-dev-server 3版本 webpack-cli4版本 会导致不兼容
+
+解决： 
+```shell 
+npx webpack serve 
+```
+或者
+```shell
+npx webpack-cli serve
+```
+
+### devServer选项
+作为webpack serve 或者 webpack-cli serve 的选项，集成在webpack.config中
 
 ```js
 // webpack.config.js
@@ -57,7 +95,8 @@ npm i webpack-cli@^3 webpack-dev-server -D
   ],
 ```
 
-#### publicPath 
+#### publicPath
+
   `dev-server` 编译后的资源不会输出到某个文件夹下，而是保存在内存中
 
   `publicPath` 指定webpack编译后的资源路径 如果指定为 `/dist/`
@@ -72,10 +111,6 @@ npm i webpack-cli@^3 webpack-dev-server -D
   配置了`demo`为文件夹，访问url默认访问了`demo`下的`index.html`作为静态资源
 
 
-
-
-
-  
 
 ## support-mdx.md
 #### 支持加载md文件

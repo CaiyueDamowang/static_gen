@@ -1,14 +1,14 @@
 #### babel配置和优化
 
 
-- @babel/preset-react
+- "@babel/preset-react"
   
   该插件始终包含下列插件
   - @babel/plugin-syntax-jsx
   -  @babel/plugin-transform-react-jsx
   -  @babel/plugin-transform-react-display-name
 
-- @babel/plugin-transform-runtime
+- "@babel/plugin-transform-runtime
 
   当对多个模块进行polyfill时,会在模块顶部定义一段polyfill代码
 
