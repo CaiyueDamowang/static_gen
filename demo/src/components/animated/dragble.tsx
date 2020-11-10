@@ -12,7 +12,7 @@ export const Dragble: React.FC<{
     let deltaX = 0;
     let dragging = false;
 
-    const resolve = () => {
+    const resolveAnimationStop = () => {
       if (
         deltaX > threshold ||
         deltaX < -threshold
@@ -31,17 +31,20 @@ export const Dragble: React.FC<{
       doTask(deltaX);
     };
     const end = () => {
+      deltaX = 0;
       dragging = false;
-      resolve();
-      doTask((deltaX = 0));
+      resolveAnimationStop();
+      doTask(deltaX);
     };
 
     const onMouseDown = ({ clientX }: React.MouseEvent) => {
       if (!clientX) return;
+
       start(clientX);
     };
     const onMouseMove = ({ clientX }: React.MouseEvent) => {
-      if (!dragging || !clientX) return
+      if (!clientX) return;
+      if (!dragging) return;
 
       move(clientX);
     };
@@ -49,22 +52,21 @@ export const Dragble: React.FC<{
       end();
     };
     const onMouseLeave = () => {
-      console.log('leave')
       end();
     };
 
     const onTouchStart = ({ touches }: React.TouchEvent) => {
       if (touches.length !== 1) return
-
-      const { clientX }= touches[0];
-      start(clientX);
+      
+      const { clientX } = touches[0];
+      clientX && start(clientX);
     };
     const onTouchMove = ({ touches }: React.TouchEvent) => {
       if (!dragging) return;
       if (touches.length !== 1) return;
 
       const { clientX }= touches[0];
-      move(clientX);
+      clientX && move(clientX);
     };
     const onTouchEnd = () => {
       end();
