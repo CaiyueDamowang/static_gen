@@ -1,4 +1,4 @@
-import React, { Children, useContext } from "react";
+import React, { Children, useContext, useState } from "react";
 import { css } from 'emotion';
 
 import { Slider } from "../animated/slider";

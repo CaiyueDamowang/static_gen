@@ -50,3 +50,10 @@ npx webpack-cli serve
   告诉d`ev-serve`r配置那个文件夹作为静态资源
   配置了`demo`为文件夹，访问url默认访问了`demo`下的`index.html`作为静态资源
 
+#### HTMLWebpackPlugin
+
+设置了`publicPath`后, 该插件会将index.html输出到 publicPath 路径后的内存系统中
+
+所以一般设置publicPath 为 `/`
+
+不然就要访问 localhost: 8000/publicPath/index.html
