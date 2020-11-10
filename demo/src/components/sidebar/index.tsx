@@ -9,14 +9,10 @@ import { ConfigContext } from "../../store";
 
 export const Sidebar: React.FC = () => {
   const width = 220;
-  const leftInAnimated: SpringProps = {
-    from: { left: -width },
-    to: { left: 0 }
-  };
 
   return (
     <StyledSidebar>
-      <Slider animationConfig={leftInAnimated}>
+      <Slider distance={width}>
         <Container width={width}>
           <Avatar />
           <Menu />
@@ -35,7 +31,7 @@ const Container: React.FC<{
       className={css`
         padding: 40px 10px 0 20px;
         width: ${width}px;
-        height: 100%;
+        height: 100vh;
       
         background-color: #fff;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
