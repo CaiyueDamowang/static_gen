@@ -1,27 +1,23 @@
 import React from 'react';
-import { css } from "emotion";
-import { Navigation } from "../components/navigation/index";
-import { Footer } from "../components/footer/index";
-import { Sidebar } from "../components/sidebar/index"
+import { css } from 'emotion';
+import { Navigation } from '../components/navigation/index';
+import { Footer } from '../components/footer/index';
+import { Sidebar } from '../components/sidebar/index'
 
-import MD from "../../docs/babel-config.md";
+import MD from '../../docs/babel-config.md';
 
 const Layout: React.FC = () => {
   return (
     <div className={layout}>
       <Navigation />
       <Sidebar />
-
-      <div style={{
-        flexGrow: 1,
-      }}>
+      <div style={{ flexGrow: 1 }}>
         <MD></MD>
       </div>
-
       <Footer></Footer>
     </div>
   )
-}
+};
 
 export default Layout;
 
@@ -32,4 +28,4 @@ const layout = css`
 
   display: flex;
   flex-direction: column;
-`
+`;

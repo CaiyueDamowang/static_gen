@@ -1,50 +1,53 @@
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
+const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 /**
  * @type {import('webpack').Configuration}
  */
 module.exports = {
   entry: {
-    index:  path.resolve(__dirname, "demo/src/index.tsx"),
+    index:  path.resolve(__dirname, 'demo/src/index.tsx'),
   },
   output: {
-    path: path.resolve(__dirname, "demo/dist"),
-    filename: "[name].js",
+    path: path.resolve(__dirname, 'demo/dist'),
+    filename: '[name].js',
   },
 
   devServer: {
-    host: "localhost",
+    host: 'localhost',
     hot: true,
     port: 8000,
-    compress: true,
-    publicPath: "/",
-    contentBase: path.resolve(__dirname, './demo/dist/')
+    // compress: true,
+    publicPath: '/',
+    contentBase: path.resolve(__dirname, './demo/dist/'),
   },
-
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/,
+  },
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+        include: path.resolve(__dirname, './demo/src/'),
       },
       {
         test: /\.md$/,
-        use: ["babel-loader", require.resolve("./scripts/markdownLoader")],
+        use: ['babel-loader', require.resolve('./scripts/markdownLoader')],
+        include: path.resolve(__dirname, './demo/docs/'),
       },
       {
         test: /\.tsx$/,
-        loader: "awesome-typescript-loader",
+        loader: 'awesome-typescript-loader',
+        include: path.resolve(__dirname, './demo/'),
       },
     ],
   },
 
   resolve: {
-    extensions: [".js", ".tsx", ".ts"],
-    modules: [
-      path.resolve(__dirname, "./demo/src/components/"),
-      "node_modules",
-    ],
+    extensions: ['.tsx', '.ts', '.js'],
+    modules: ['node_modules'],
   },
 
   plugins: [
@@ -60,14 +63,14 @@ module.exports = {
 
   optimization: {
     splitChunks: {
-      chunks: "async",
+      chunks: 'async',
       minSize: 0,
       minRemainingSize: 0,
       maxSize: 150000,
       minChunks: 1,
       maxAsyncRequests: 30,
       maxInitialRequests: 30,
-      automaticNameDelimiter: "~",
+      automaticNameDelimiter: '~',
       enforceSizeThreshold: 50000,
       cacheGroups: {
         defaultVendors: {
@@ -82,5 +85,5 @@ module.exports = {
       },
     },
   },
-  mode: "development",
+  mode: 'development',
 };

@@ -1,10 +1,14 @@
-import React, { useState } from "react";
-import { useSpring, animated } from "react-spring/web";
+import React from 'react';
+import { useSpring, animated } from 'react-spring/web';
 
 export const Dragble: React.FC<{
   resolveCallback: Function;
   threshold: number;
-}> = ({ children, resolveCallback, threshold }) => {
+}> = ({
+  children,
+  resolveCallback,
+  threshold 
+}) => {
   const [{ x }, set] = useSpring(() => ({ x: 0 }));
 
   const getEventHandler = () => {
@@ -31,10 +35,9 @@ export const Dragble: React.FC<{
       doTask(deltaX);
     };
     const end = () => {
-      deltaX = 0;
       dragging = false;
       resolveAnimationStop();
-      doTask(deltaX);
+      doTask(deltaX = 0);
     };
 
     const onMouseDown = ({ clientX }: React.MouseEvent) => {
@@ -43,8 +46,7 @@ export const Dragble: React.FC<{
       start(clientX);
     };
     const onMouseMove = ({ clientX }: React.MouseEvent) => {
-      if (!clientX) return;
-      if (!dragging) return;
+      if (!clientX || !dragging) return;
 
       move(clientX);
     };
@@ -84,7 +86,12 @@ export const Dragble: React.FC<{
     }
   };
   return (
-    <animated.div style={{ transform: x.interpolate(x => `translate3d(${x}px, 0, 0)`)}} {...getEventHandler()}>
+    <animated.div
+      style={{ 
+        transform: x.interpolate(x => `translate3d(${x}px, 0, 0)`)
+      }}
+      {...getEventHandler()}
+    >
       {children}
     </animated.div>
   )

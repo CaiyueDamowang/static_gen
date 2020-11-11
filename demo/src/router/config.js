@@ -1,18 +1,14 @@
-import A from "../docs/list.md";
-import B from "../docs/react-router.md";
-import C from "../docs/react.md";
-
 export default [
   {
     path: 'A',
-    component: A,
+    component: () => import('../docs/list.md'),
   },
   {
     path: 'B',
-    component: B,
+    component: () => import('../docs/react-router.md'),
   },
   {
     path: 'C',
-    component: C,
+    component: () => import('../docs/react.md'),
   },
 ];

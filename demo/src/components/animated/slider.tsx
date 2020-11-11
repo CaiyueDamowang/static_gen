@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useSpring, animated } from "react-spring/web";
-import { Dragble } from "./dragble";
+import React, { useState } from 'react';
+import { useSpring, animated } from 'react-spring/web';
+import { Dragble } from './dragble';
 
 export interface AnimatedProps {
   children: React.ReactElement;

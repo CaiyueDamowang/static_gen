@@ -1,6 +1,6 @@
-import React from "react";
-import { Route } from "react-router-dom";
-import Routers from "./config";
+import React from 'react';
+import { Route } from 'react-router-dom';
+import Routers from './config';
 
 export default () => (
   <>

@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { css } from "emotion";
-import { ConfigContext, UserInfo } from "../../store";
+import React, { useContext } from 'react';
+import { css } from 'emotion';
+import { ConfigContext, UserInfo } from '../../store';
 
-export const Avatar: React.FC = (props) => {
+export const Avatar: React.FC = () => {
   const {
     sidebar: {
       userInfo
