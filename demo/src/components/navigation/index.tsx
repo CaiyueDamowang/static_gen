@@ -2,15 +2,22 @@ import React, { useContext } from 'react';
 import { css } from 'emotion';
 import { ConfigContext, NavigationProps } from '../../store';
 
-export const Navigation: React.FC = () => {
-  const { navigation }  = useContext(ConfigContext)
+export const Navigation: React.FC<{
+  toggleMenu: Function;
+}> = ({ toggleMenu }) => {
+  const { navigation }  = useContext(ConfigContext);
+
   return (
-    <Navbar {...navigation} />
+    <Navbar {...navigation} handleClick={toggleMenu} />
   )
-}
+};
 
-const Navbar: React.FC<NavigationProps> = (props) => {
+interface InteractiveNav extends NavigationProps {
+  handleClick: Function;
+};
 
+const Navbar: React.FC<InteractiveNav> = props => {
+  const handleClick = () => props.handleClick();
   return (
     <nav className={css`
       width: 100%;
@@ -30,7 +37,7 @@ const Navbar: React.FC<NavigationProps> = (props) => {
       display: flex;
       justify-content: space-evenly;`
     }>
-      <i className={'menu-controll'}>ic</i>
+      <span className={'menu-controll'} onClick={handleClick}>ic</span>
       <h1 className={css`
         margin: 0;
         padding: 0;
@@ -40,7 +47,5 @@ const Navbar: React.FC<NavigationProps> = (props) => {
         ` + ' white-text'}>{ props.title }</h1>
       <i className={'settings'}>ic</i>
     </nav>
-  )
-}
-
-
+  );
+};

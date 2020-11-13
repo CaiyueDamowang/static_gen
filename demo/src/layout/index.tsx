@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { css } from 'emotion';
 import { Navigation } from '../components/navigation/index';
 import { Footer } from '../components/footer/index';
-import { Sidebar } from '../components/sidebar/index'
 
 import MD from '../../docs/babel-config.md';
 
 const Layout: React.FC = () => {
+  const [visibility, setVisibility] = useState<Boolean>();
+  const toggle = () => setVisibility(!visibility);
+
   return (
     <div className={layout}>
-      <Navigation />
-      <Sidebar />
+      <Navigation toggleMenu={toggle} />
       <div style={{ flexGrow: 1 }}>
         <MD></MD>
       </div>

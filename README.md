@@ -15,6 +15,40 @@
 
   为了避免在多个模块中，重复添加polyfill代码，此插件更改了polyfill代码的引用方式
 
+#### awesome-ts-loeader 可配置tsx语法
+
+所以可以不用引入babel的preset-react
+
+## support-ModuleHotReplace.md
+#### 模块热替换
+
+webpack.config.js
+```js
+  devServer: {
+    ...
+    hot: true,
+  },
+```
+
+
+在入口文件添加
+
+```js
+if (module.hot) {
+    module.hot.accept('./App', async() => {
+        const { App } = await import('./App');
+        ReactDOM.render(<App/> , container);
+    })
+}
+```
+
+webpack-dev-server会监听文件的变化，
+如果发生变化就告诉注入在浏览器的客户端去知情accept的回调
+
+当App依赖的文件变更，会向上传递一个更新事件，直到有文件捕捉这个更新，比如index.ts
+
+如果没有被捕捉则强制刷新浏览器
+
 ## support-codesplit.md
 #### 代码分割
 
@@ -123,6 +157,15 @@ npx webpack-cli serve
 
   告诉d`ev-serve`r配置那个文件夹作为静态资源
   配置了`demo`为文件夹，访问url默认访问了`demo`下的`index.html`作为静态资源
+
+#### HTMLWebpackPlugin
+
+设置了`publicPath`后, 该插件会将index.html输出到 publicPath 路径后的内存系统中
+
+所以一般设置publicPath 为 `/`
+
+不然就要访问 localhost: 8000/publicPath/index.html
+
 
 
 

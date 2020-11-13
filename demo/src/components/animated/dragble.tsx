@@ -85,10 +85,12 @@ export const Dragble: React.FC<{
       onTouchEnd,
     }
   };
+
   return (
     <animated.div
       style={{ 
-        transform: x.interpolate(x => `translate3d(${x}px, 0, 0)`)
+        // transform: x.interpolate(x => `translate3d(${x}px, 0, 0)`)
+        marginLeft: x.interpolate(x => `${x}px`),
       }}
       {...getEventHandler()}
     >
