@@ -42,4 +42,3 @@ type MyReadOnly<T, K extends keyof T> = {
 
 type MyExclude<T, U>  = T extends U ? never : T;
 
-

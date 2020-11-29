@@ -1,25 +1,9 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-html,body, #root {
-    height: 100%;;
-}
-a { text-decoration: none; }
-li { list-style: none; }
+@import './index.css';
 
-
-// common 
-.white-text {
-    color: #f4f4f4;
+html, body {
+    height: 100vh;
 }
-.small-text {
-    font-size: 8px;
+#root {
+    height: 100%;
+    width: 100%;
 }
-
-// react-spring animated componnent is a pure div
-.animated {
-    transition: 1s;
-}
-

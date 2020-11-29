@@ -8,7 +8,8 @@
     "dev": "webpack-cli serve",
     "start": "npm run dev",
     "bundle": "webpack",
-    "lint": "eslint /demo/src/ --fix"
+    "lint": "eslint /demo/src/ --fix",
+    "buildcss": "postcss ./demo/src/common/tailwind.css -o ./demo/src/common/index.css"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,8 @@
     "css-loader": "^5.0.1",
     "html-webpack-plugin": "^4.5.0",
     "node-sass": "^4.14.1",
+    "postcss": "^8.1.10",
+    "postcss-cli": "^8.3.0",
     "sass-loader": "^10.0.5",
     "style-loader": "^2.0.0",
     "typescript": "^4.0.5",
@@ -45,6 +48,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "autoprefixer": "^10.0.4",
     "emotion": "^10.0.27",
     "markdown-it": "^12.0.2",
     "react": "^17.0.1",
@@ -52,6 +56,7 @@
     "react-hot-loader": "^4.13.0",
     "react-router-dom": "^5.2.0",
     "react-spring": "^8.0.27",
-    "styled-jsx": "^3.3.1"
+    "styled-jsx": "^3.3.1",
+    "tailwindcss": "^2.0.1"
   }
 }
